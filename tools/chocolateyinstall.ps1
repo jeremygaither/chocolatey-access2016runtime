@@ -9,7 +9,7 @@ $script = $MyInvocation.MyCommand.Definition
 $accessrtTempFolder = Join-Path $env:Temp 'chocolatey\Access2016RT'
 
 $packageArgs = @{
-  packageName   = 'access2016runtime'
+  packageName   = 'access2016runtimearchive'
   fileType      = 'exe'
   url           = 'https://download.microsoft.com/download/D/B/D/DBD20EF9-A945-4768-AEB0-617BCEA2214A/accessruntime_4288-1001_x64_en-us.exe'
   softwareName  = 'Access2016Runtime*'
@@ -21,10 +21,11 @@ $packageArgs = @{
 
 Install-ChocolateyPackage @packageArgs 
 
+$packageArgs['packageName'] = 'access2016runtimeinstaller'
 $packageArgs['file'] = "$accessrtTempFolder\setup.exe"
 $packageArgs['silentArgs'] = "/config `"$script\tools\configuration.xml`""
 
-Install-ChocolateyPackage @packageArgs 
+Install-ChocolateyPackage @packageArgs
 
 if (Test-Path "$accessrtTempFolder") {
   Remove-Item -Recurse "$accessrtTempFolder"
