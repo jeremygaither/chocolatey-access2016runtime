@@ -21,8 +21,8 @@ $packageArgs = @{
 
 Install-ChocolateyPackage @packageArgs 
 
-$packageArgs['file'] = "$accessrtTempFolder\Setup.exe"
-$packageArgs['silentArgs'] = "/quiet"
+$packageArgs['file'] = "$accessrtTempFolder\setup.exe"
+$packageArgs['silentArgs'] = "/config `"$script\tools\configuration.xml`""
 
 Install-ChocolateyPackage @packageArgs 
 
