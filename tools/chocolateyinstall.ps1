@@ -7,7 +7,6 @@ $ErrorActionPreference = 'Stop'; # stop on all errors
 $script = $MyInvocation.MyCommand.Definition
 
 $accessrtTempFolder = Join-Path $env:Temp 'chocolatey\Access2016RT'
-$configFile = Join-Path $(Split-Path -parent $script) 'configuration64.xml'
 
 $packageArgs = @{
   packageName   = 'access2016runtime'
