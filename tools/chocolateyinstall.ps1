@@ -25,7 +25,7 @@ $packageArgs['packageName'] = 'access2016runtimeinstaller'
 $packageArgs['file'] = "$accessrtTempFolder\setup.exe"
 $packageArgs['silentArgs'] = "/config `"$script\tools\configuration.xml`""
 
-Install-ChocolateyPackage @packageArgs
+Install-ChocolateyInstallPackage @packageArgs
 
 if (Test-Path "$accessrtTempFolder") {
   Remove-Item -Recurse "$accessrtTempFolder"
