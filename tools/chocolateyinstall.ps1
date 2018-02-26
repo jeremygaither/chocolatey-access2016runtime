@@ -5,7 +5,7 @@
 $ErrorActionPreference = 'Stop'; # stop on all errors
 
 $script = $MyInvocation.MyCommand.Definition
-
+$configFile = Join-Path $(Split-Path -parent $script) 'configuration.xml'
 $accessrtTempFolder = Join-Path $env:Temp 'chocolatey\Access2016RT'
 
 $packageArgs = @{
@@ -23,7 +23,7 @@ Install-ChocolateyPackage @packageArgs
 
 $packageArgs['packageName'] = 'access2016runtimeinstaller'
 $packageArgs['file'] = "$accessrtTempFolder\setup.exe"
-$packageArgs['silentArgs'] = "/config `"$script\tools\configuration.xml`""
+$packageArgs['silentArgs'] = "/config `"$configFile`""
 
 Install-ChocolateyInstallPackage @packageArgs
 
